@@ -13,4 +13,7 @@ start-detach() {
     vboxmanage startvm "$VM_NAME" --type headless
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 }
+login-vm(){
+    ssh -p 4422 root@localhost
+}
 $@
