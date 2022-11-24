@@ -1,3 +1,6 @@
+apt-install(){
+    apt update && apt-get install p7zip-full p7zip-rar virtualbox -y
+}
 start-detach() {
     export VM_IMAGE_DIR="/home/ubuntu/VantageExpress17.20_Sles12"
     DEFAULT_VM_NAME="vantage-express"
