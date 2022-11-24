@@ -1,15 +1,15 @@
 export VM_IMAGE_DIR="/home/${USER}/VantageExpress17.20_Sles12"
-apt-install(){
+apt-install() {
     sudo apt update && sudo apt-get install virtualbox -y
 }
-download(){
+download() {
     wget -O $VM_IMAGE_DIR/vbox.ova https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress_VirtualBoxAppliance_17.20_Sles12_20220819081111.ova
     wget -O $VM_IMAGE_DIR/disk1.vmdk https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk1.vmdk
-    wget -O $VM_IMAGE_DIR/disk2.vmdk https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk2.vmdk 
+    wget -O $VM_IMAGE_DIR/disk2.vmdk https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk2.vmdk
     wget -O $VM_IMAGE_DIR/disk3.vmdk https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk3.vmdk
 }
 start-detach() {
-    
+
     DEFAULT_VM_NAME="vantage-express"
     VM_NAME="${VM_NAME:-$DEFAULT_VM_NAME}"
     vboxmanage createvm --name "$VM_NAME" --register --ostype openSUSE_64
@@ -23,7 +23,7 @@ start-detach() {
     vboxmanage startvm "$VM_NAME" --type headless
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 }
-login-vm(){
+login-vm() {
     ssh -p 4422 root@localhost
 }
 $@
