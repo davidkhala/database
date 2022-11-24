@@ -3,10 +3,10 @@ apt-install(){
     sudo apt update && sudo apt-get install virtualbox -y
 }
 download(){
-    wget -P $VM_IMAGE_DIR https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress_VirtualBoxAppliance_17.20_Sles12_20220819081111.ova
-    wget -P $VM_IMAGE_DIR https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk1.vmdk
-    wget -P $VM_IMAGE_DIR https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk2.vmdk
-    wget -P $VM_IMAGE_DIR https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk3.vmdk
+    wget -O $VM_IMAGE_DIR/vbox.ova https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress_VirtualBoxAppliance_17.20_Sles12_20220819081111.ova
+    wget -O $VM_IMAGE_DIR/disk1.vmdk https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk1.vmdk
+    wget -O $VM_IMAGE_DIR/disk2.vmdk https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk2.vmdk 
+    wget -O $VM_IMAGE_DIR/disk3.vmdk https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12-disk3.vmdk
 }
 start-detach() {
     
