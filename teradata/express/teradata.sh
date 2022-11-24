@@ -1,6 +1,6 @@
 export VM_IMAGE_DIR="/home/${USER}/VantageExpress17.20_Sles12"
 apt-install(){
-    apt update && apt-get install virtualbox -y
+    sudo apt update && sudo apt-get install virtualbox -y
 }
 download(){
     wget -P $VM_IMAGE_DIR https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress_VirtualBoxAppliance_17.20_Sles12_20220819081111.ova
