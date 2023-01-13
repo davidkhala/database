@@ -2,7 +2,22 @@
 # Trino server
 - Port: 8080
 
-# Trino CLI
+# Connect
+``` Maven
+<dependency>
+    <groupId>io.trino</groupId>
+    <artifactId>trino-jdbc</artifactId>
+    <version>405</version>
+</dependency>
+```
+- [jar](https://repo1.maven.org/maven2/io/trino/trino-jdbc/405/trino-jdbc-405.jar)
+- ConnectionString template: `jdbc:trino://$host:8080/$catalog/$schema`
+  - $catalog: `mongo`, `hive`
+- JDBC class path: `io.trino.jdbc.TrinoDriver`
+
+
+
+## Trino CLI
 - The CLI is a self-executing JAR file
 - The CLI uses the Trino client REST API over HTTP/HTTPS to communicate with the coordinator on the cluster.
 
