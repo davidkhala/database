@@ -13,6 +13,7 @@
 - [jar](https://repo1.maven.org/maven2/io/trino/trino-jdbc/405/trino-jdbc-405.jar)
 - ConnectionString template: `jdbc:trino://$host:8080/$catalog/$schema`
   - $catalog: `mongo`, `hive`
+  - Sample: `jdbc:trino://152.69.211.12:8080/`
 - JDBC class path: `io.trino.jdbc.TrinoDriver`
 
 
