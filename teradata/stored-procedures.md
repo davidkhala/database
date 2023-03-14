@@ -20,7 +20,3 @@ Like PL/SQL files
 - A file that is created and stored on Teradata
 - Is executed in response to SQL `EXECUTE` statement.
 - Use case similar to Run file
-# Basic Teradata Query (BTEQ)
-- It is a command-driven utility, used to run any DML statement, DDL statement, create Macros, and stored procedures.
-- BTEQ utility is used in both batch and user-interactive mode.
-  - Batch mode has error checking and conditional logic, and allows for the work to be done in the background.
