@@ -13,4 +13,6 @@ A free version of Teradata
 For Cloud Host
 - AWS doesn't support nested virtualization, you have to use Bare Mental shape in AWS to run Vantage Express
 - Minimum hardware requirement: 4 vCPUs and 8GB of RAM, 70GB disk
+- [GCP guide](https://quickstarts.teradata.com/vantage.express.gcp.html)
+- [Azure guide](https://quickstarts.teradata.com/run-vantage-express-on-microsoft-azure.html)
 
