@@ -2,7 +2,7 @@
 the databases index
 
 
-## External projects
+## Related projects
 - [nodejs](https://github.com/davidkhala/node-databases)
 - [Oracle DB](https://github.com/davidkhala/oracle-database-collection)
 
