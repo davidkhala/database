@@ -1,4 +1,4 @@
-export VM_IMAGE_DIR="/home/${USER}/VantageExpress17.20_Sles12"
+export VM_IMAGE_DIR="${HOME}/VantageExpress17.20_Sles12"
 mkdir -p $VM_IMAGE_DIR
 apt-install() {
     sudo apt update && sudo apt-get install virtualbox -y
