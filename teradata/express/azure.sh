@@ -4,8 +4,9 @@ az config set defaults.group=root-compartment
 create-vm() {
 
   az disk create -n teradata-vantage-express --size-gb 60
-  az vm create --name teradata-vantage-express --image UbuntuLTS --size Standard_F4s_v2 \
-    --ssh-key-name oci --public-ip-sku Basic --admin-username azureuser # Your choice here
+  az sshkey create --name teradata-ssh-key
+
+  az vm create --name teradata-vantage-express --image UbuntuLTS --size Standard_F4s_v2 --public-ip-sku Basic --admin-username azureuser --ssh-key-name teradata-ssh-key
   DISK_ID=$(az disk show -n teradata-vantage-express --query 'id' -o tsv)
   az vm disk attach --vm-name teradata-vantage-express --name $DISK_ID
 
