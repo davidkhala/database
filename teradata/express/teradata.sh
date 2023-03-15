@@ -31,6 +31,7 @@ start-attach() {
 
 }
 login-vm() {
-    ssh -p 4422 root@localhost
+    sudo apt-get install -y sshpass
+    sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost
 }
 $@
