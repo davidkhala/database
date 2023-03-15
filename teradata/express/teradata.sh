@@ -21,6 +21,13 @@ start-attach() {
     vboxmanage createvm --name "$VM_NAME" --register --ostype openSUSE_64
     vboxmanage modifyvm "$VM_NAME" --ioapic on --memory 6000 --vram 128 --nic1 nat --cpus 4
     vboxmanage storagectl "$VM_NAME" --name "SATA Controller" --add sata --controller IntelAhci
+    
+    set -e  
+    [[ -n $(find $VM_IMAGE_DIR -name '*disk1*') ]] # ensure file exist
+    [[ -n $(find $VM_IMAGE_DIR -name '*disk2*') ]] # ensure file exist
+    [[ -n $(find $VM_IMAGE_DIR -name '*disk3*') ]] # ensure file exist
+    
+    
     vboxmanage storageattach "$VM_NAME" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium  "$(find $VM_IMAGE_DIR -name '*disk1*')"
     vboxmanage storageattach "$VM_NAME" --storagectl "SATA Controller" --port 1 --device 0 --type hdd --medium  "$(find $VM_IMAGE_DIR -name '*disk2*')"
     vboxmanage storageattach "$VM_NAME" --storagectl "SATA Controller" --port 2 --device 0 --type hdd --medium  "$(find $VM_IMAGE_DIR -name '*disk3*')"
