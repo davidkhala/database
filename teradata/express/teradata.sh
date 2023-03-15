@@ -9,8 +9,9 @@ download-OVA() {
    
 }
 download-disks() {
-    $ WIP
-    wget -O $VM_IMAGE_DIR/vbox.ova https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress_VirtualBoxAppliance_17.20_Sles12_20220819081111.ova
+    
+    wget -O $VM_IMAGE_DIR/ve.7z https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12_20230220064202.7z
+    7z x $VM_IMAGE_DIR/ve.7z
 }
 start-attach() {
 
