@@ -67,7 +67,8 @@ ExecStop=/usr/bin/VBoxManage controlvm vantage-express savestate
 WantedBy=multi-user.target
 EOF
     sudo systemctl daemon-reload
-    sudo systemctl enable --now vantage-express
+    sudo systemctl enable vantage-express # inline start can fail due to vantage-express vm is running.
+    
     
     
 }
