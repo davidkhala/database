@@ -41,4 +41,34 @@ login-vm() {
     sudo apt-get install -y sshpass
     sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost
 }
+set-autostart(){
+    echo VBOXAUTOSTART_DB=/etc/vbox | sudo tee -a /etc/default/virtualbox
+    echo VBOXAUTOSTART_CONFIG=/etc/vbox/autostart.cfg | sudo tee -a /etc/default/virtualbox
+
+
+    sudo sh -c "cat >>/etc/systemd/system/vantage-express.service" <<-EOF
+[Unit]
+Description=vm1
+After=network.target virtualbox.service
+Before=runlevel2.target shutdown.target
+[Service]
+User=root
+Group=root
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+ExecStart=/usr/bin/VBoxManage startvm vantage-express --type headless
+ExecStop=/usr/bin/VBoxManage controlvm vantage-express savestate
+[Install]
+WantedBy=multi-user.target
+EOF
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now vantage-express
+    
+    
+}
 $@
