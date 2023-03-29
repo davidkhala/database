@@ -14,7 +14,10 @@ Like PL/SQL files
 ## Stored Procedures
 - A file that is created, compiled and stored on Teradata
 - Is executed in response to SQL `CALL` statement.
-- Either externally or internally
+- external stored procedure refers to a stored procedure you write in C, C++, or Java.
+- (internal) stored procedure refers to a stored procedure you write with SQL statements
+
+
 ## Macro
 - Act as a sort of polymorphic (parameterized) view
 - A file that is created and stored on Teradata
