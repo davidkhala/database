@@ -1,3 +1,15 @@
+CREATE TABLE orders (customer_id INTEGER, total_cost FLOAT);
+INSERT INTO orders (43563, 734.12);
+INSERT INTO orders (65758, 211.15);
+INSERT INTO orders (23235, 1264.98);
+INSERT INTO orders (43563, 583.23);
+INSERT INTO orders (89786, 278.66);
+INSERT INTO orders (13253, 401.97);
+INSERT INTO orders (98765, 1042.23);
+INSERT INTO orders (23235, 699.23);
+INSERT INTO orders (43563, 935.35);
+INSERT INTO orders (88354, 375.09);
+
 -- support subsequently definition (defer define)
 
 WITH multiple_order_totals AS (
