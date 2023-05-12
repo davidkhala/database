@@ -19,9 +19,9 @@ AWS doesn't support nested virtualization, you have to use Bare Mental shape in 
 1. `./gcp.sh create-vm`
 2. ssh login by`./gcp.sh ssh-vm`
 3. In the ssh session, run
-  1. `./teradata.sh apt-install`
-  2. `./teradata.sh download-disks`
-  3. `./teradata.sh start-attach`
+   1. `./teradata.sh apt-install`
+   2. `./teradata.sh download-disks`
+   3. `./teradata.sh start-attach`
 ### Azure
 [guide](https://quickstarts.teradata.com/run-vantage-express-on-microsoft-azure.html)
 
