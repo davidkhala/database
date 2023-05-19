@@ -37,7 +37,7 @@ start-attach() {
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 
 }
-login-vm() {
+login-vbox-vm() {
     sudo apt-get install -y sshpass
     sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost
 }
