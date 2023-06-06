@@ -6,9 +6,6 @@ create-vm() {
     --create-disk=boot=yes,device-name=ve-disk,image-project=ubuntu-os-cloud,image-family=ubuntu-2004-lts,size=70,type=pd-standard
   curl https://raw.githubusercontent.com/davidkhala/gcp-collections/main/compute/cli/gcloud.sh | bash -s wait-until-ssh ${vm_name}
 }
-backup-vm() {
-  gcloud compute machine-images create $1 --source-instance=${vm_name}
-}
 ssh-vm() {
   gcloud compute ssh ${vm_name} --zone=${zone}
 }

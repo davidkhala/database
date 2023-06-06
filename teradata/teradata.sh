@@ -17,7 +17,7 @@ wait-until-health() {
       sleep 1
       echo ${counter} times retry
     fi
-
   done
+  echo $counter >> wait-until-health.done
 }
 $@
