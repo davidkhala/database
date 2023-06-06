@@ -9,6 +9,6 @@ db-health() {
 
 }
 wait-until-health() {
-  curl -sSL https://raw.githubusercontent.com/davidkhala/linux-utils/main/wait-until.sh | sudo bash -s db-health
+  curl -sSL https://raw.githubusercontent.com/davidkhala/linux-utils/main/wait-until.sh | bash -s db-health
 }
 $@

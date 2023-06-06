@@ -6,6 +6,7 @@ setup() {
     download-disks
     start-attach
     set-autostart
+    ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh | bash -s wait-until-health"
 }
 
 apt-install() {
@@ -43,9 +44,9 @@ start-attach() {
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 
 }
-login-vbox-vm() {
+ssh-vbox-vm() {
     sudo apt-get install -y sshpass
-    sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost
+    sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost $@
 }
 set-autostart() {
     sudo wget -O /etc/default/virtualbox https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvirtualbox
