@@ -1,4 +1,4 @@
-set -e
+set -e -x
 export VM_IMAGE_DIR="${HOME}/VantageExpress17.20_Sles12"
 mkdir -p $VM_IMAGE_DIR
 setup-vbox-vm() {
