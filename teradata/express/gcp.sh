@@ -13,8 +13,11 @@ ssh-vm() {
   gcloud compute ssh ${vm_name} --zone=${zone}
 }
 setup-vm() {
-  gcloud compute ssh ${vm_name} --zone=${zone} --command="wget https://raw.githubusercontent.com/davidkhala/databases/main/teradata/express/teradata.sh; chmod +x ./teradata.sh; ./teradata.sh setup"
-  
+  gcloud compute ssh ${vm_name} --zone=${zone} --command="wget https://raw.githubusercontent.com/davidkhala/databases/main/teradata/express/teradata.sh; chmod +x ./teradata.sh;"
+  gcloud compute ssh ${vm_name} --zone=${zone} --command="./teradata.sh apt-install"
+  gcloud compute ssh ${vm_name} --zone=${zone} --command="./teradata.sh download-disks"
+  gcloud compute ssh ${vm_name} --zone=${zone} --command="./teradata.sh setup-vbox-vm"
+
 }
 delete-vm() {
   gcloud compute instances delete ${vm_name} --zone=${zone} --quiet

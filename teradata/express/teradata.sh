@@ -1,14 +1,9 @@
 set -e
 export VM_IMAGE_DIR="${HOME}/VantageExpress17.20_Sles12"
 mkdir -p $VM_IMAGE_DIR
-setup() {
-    apt-install
-    download-disks
+setup-vbox-vm() {
     start-attach
     set-autostart
-    setup-vbox-vm
-}
-setup-vbox-vm() {
     sudo apt-get install -y sshpass
     wait-until-vbox-vm
     ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
