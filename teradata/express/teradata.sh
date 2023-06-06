@@ -1,4 +1,4 @@
-set -e -x
+set -e
 export VM_IMAGE_DIR="${HOME}/VantageExpress17.20_Sles12"
 mkdir -p $VM_IMAGE_DIR
 setup() {
@@ -6,10 +6,6 @@ setup() {
     download-disks
     start-attach
     set-autostart
-    sudo apt-get install -y netcat
-    wait-until-vbox-vm
-    sudo apt-get install -y sshpass
-    ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
 }
 
 apt-install() {
@@ -47,21 +43,7 @@ start-attach() {
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 
 }
-wait-until-vbox-vm() {
-    counter=0
-    while true; do
-        if nc -w 1 -z localhost 22; then
-           break
-        else
-            counter=counter+1
-            sleep 1
-            echo ${counter} times retry
-        fi
-    done
-}
-ssh-vbox-vm() {
-    sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost $@
-}
+
 set-autostart() {
     sudo wget -O /etc/default/virtualbox https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvirtualbox
     sudo wget -O /etc/systemd/system/vantage-express.service https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvantage-express.service

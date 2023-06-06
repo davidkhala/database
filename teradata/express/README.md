@@ -17,11 +17,11 @@ AWS doesn't support nested virtualization, you have to use Bare Mental shape in 
 ### GCP
 [guide](https://quickstarts.teradata.com/vantage.express.gcp.html)
 1. `./gcp.sh create-vm`
+2. `./gcp.sh setup-vm`
 2. ssh login by`./gcp.sh ssh-vm`
 3. In the ssh session, run
-   1. `./teradata.sh apt-install`
-   2. `./teradata.sh download-disks`
-   3. `./teradata.sh start-attach`
+   1. `./teradata-vbox.sh setup-vm`
+   
 ### Azure
 [guide](https://quickstarts.teradata.com/run-vantage-express-on-microsoft-azure.html)
 

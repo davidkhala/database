@@ -1,4 +1,4 @@
-set -e -x
+set -e
 db-health() {
   # validate the db is up
   if ! pdestate -a | grep "PDE state is RUN/STARTED."; then
@@ -19,6 +19,5 @@ wait-until-health() {
       echo ${counter} times retry
     fi
   done
-  echo $counter >> wait-until-health.done
 }
 $@
