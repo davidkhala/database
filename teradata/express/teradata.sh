@@ -6,6 +6,9 @@ setup() {
     download-disks
     start-attach
     set-autostart
+    setup-vbox-vm
+}
+setup-vbox-vm() {
     ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
 }
 

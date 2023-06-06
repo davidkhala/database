@@ -9,7 +9,6 @@ db-health() {
 }
 wait-until-health() {
   counter=0
-  echo wait until $@
   while true; do
     if db-health; then
       exit 0
