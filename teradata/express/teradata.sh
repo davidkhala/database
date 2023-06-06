@@ -4,8 +4,9 @@ mkdir -p $VM_IMAGE_DIR
 setup-vbox-vm() {
     start-attach
     set-autostart
-    sudo apt-get install -y sshpass
+    sudo apt-get install -y netcat
     wait-until-vbox-vm
+    sudo apt-get install -y sshpass
     ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
 }
 
@@ -47,7 +48,7 @@ start-attach() {
 wait-until-vbox-vm() {
     counter=0
     while true; do
-        if ssh-vbox-vm true; then
+        if nc -w 1 -z localhost 22; then
             exit 0
         else
             ((counter++))
