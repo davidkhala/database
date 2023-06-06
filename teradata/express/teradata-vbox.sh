@@ -5,6 +5,6 @@ setup-vm() {
     ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
 }
 ssh-vbox-vm() {
-    sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost $@
+    sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@${hostname:-localhost} $@
 }
 $@
