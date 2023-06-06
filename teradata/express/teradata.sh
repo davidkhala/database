@@ -9,7 +9,7 @@ setup() {
 }
 
 apt-install() {
-    sudo apt update && sudo apt-get install virtualbox -y
+    sudo apt update && sudo apt-get install virtualbox p7zip-full p7zip-rar -y
 }
 download-OVA() {
     # .ova is for GUI-based Virtualbox VM install, please use disk 1,2,3 for CLI-based Virtualbox VM install
