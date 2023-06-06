@@ -50,7 +50,7 @@ start-attach() {
 wait-until-vbox-vm() {
     counter=0
     while true; do
-        if ! nc -w 1 -z localhost 22; then
+        if nc -w 1 -z localhost 22; then
            break
         else
             counter=counter+1
