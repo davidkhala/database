@@ -1,7 +1,9 @@
 set -e -x
 export VM_IMAGE_DIR="${HOME}/VantageExpress17.20_Sles12"
 mkdir -p $VM_IMAGE_DIR
-setup-vbox-vm() {
+setup() {
+    apt-install
+    download-disks
     start-attach
     set-autostart
     sudo apt-get install -y netcat
@@ -51,7 +53,7 @@ wait-until-vbox-vm() {
         if ! nc -w 1 -z localhost 22; then
            break
         else
-            ((counter++))
+            counter=counter+1
             sleep 1
             echo ${counter} times retry
         fi
