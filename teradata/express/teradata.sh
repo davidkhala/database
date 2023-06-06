@@ -9,6 +9,8 @@ setup() {
     setup-vbox-vm
 }
 setup-vbox-vm() {
+    sudo apt-get install -y sshpass
+    wait-until-vbox-vm
     ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
 }
 
@@ -47,8 +49,19 @@ start-attach() {
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 
 }
+wait-until-vbox-vm() {
+    counter=0
+    while true; do
+        if ssh-vbox-vm true; then
+            exit 0
+        else
+            ((counter++))
+            sleep 1
+            echo ${counter} times retry
+        fi
+    done
+}
 ssh-vbox-vm() {
-    sudo apt-get install -y sshpass
     sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@localhost $@
 }
 set-autostart() {
