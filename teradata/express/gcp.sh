@@ -22,8 +22,8 @@ setup-vm() {
 }
 terminate() {
   gcloud compute instances delete ${vm_name} --zone=${zone} --quiet
-  gcloud compute firewall-rules delete ${firewall_dev}
-  gcloud compute firewall-rules delete ${firewall_prod}
+  gcloud compute firewall-rules delete ${firewall_dev} --quiet
+  gcloud compute firewall-rules delete ${firewall_prod} --quiet
 }
 housekeep() {
   gcloud compute firewall-rules create ${firewall_prod} --allow=tcp:1025 --description="Allow traffic to teradata-vantage-express" --direction=INGRESS --target-tags=teradata
