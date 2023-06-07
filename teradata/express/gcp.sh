@@ -19,11 +19,8 @@ setup-vm() {
   gcloud compute ssh ${vm_name} --zone=${zone} --command="./teradata.sh setup"
   export hostname=$(curl -s https://raw.githubusercontent.com/davidkhala/gcp-collections/main/compute/cli/instance.sh | bash -s get-ip ${vm_name})
   
-  sudo apt-get install -y netcat
-  curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/express/teradata-vbox.sh | bash -s wait-until-port-4422
-
-  sudo apt-get install -y sshpass
-  ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
+  curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/express/teradata-vbox.sh | bash -s setup-vm
+  
 }
 terminate() {
   gcloud compute instances delete ${vm_name} --zone=${zone} --quiet
