@@ -16,13 +16,13 @@ AWS doesn't support nested virtualization, you have to use Bare Mental shape in 
 - Minimum hardware requirement: 4 vCPUs and 8GB of RAM, 70GB disk
 ### GCP
 [guide](https://quickstarts.teradata.com/vantage.express.gcp.html)
+
+To setup an instance with teradata vantage express embedded
 1. `./gcp.sh create-vm`
 2. `./gcp.sh setup-vm`
-2. ssh login by`./gcp.sh ssh-vm`
-3. In the ssh session, run
-   1. `./teradata-vbox.sh setup-vm`
 
-TODO: `gcloud compute ssh root@teradata-vantage-express --zone=asia-east2-c --strict-host-key-checking=no -- -p 4422`   
+To tear down related resource, run `./gcp.sh terminate`
+
 ### Azure
 [guide](https://quickstarts.teradata.com/run-vantage-express-on-microsoft-azure.html)
 

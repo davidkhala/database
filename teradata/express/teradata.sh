@@ -50,17 +50,17 @@ set-autostart() {
     sudo systemctl enable vantage-express # inline start can fail due to vantage-express vm is running.
 
 }
-setup-vm() {
+setup-vbox() {
     sudo apt-get install -y sshpass
     wait-until-port-4422
     
-    ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
+    ssh-vbox "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
 }
 wait-until-port-4422() {
     local counter=0
     set +e
     while true; do
-        if ssh-vbox-vm "true"; then
+        if ssh-vbox "true"; then
             break
         else
             ((counter++))
@@ -72,7 +72,7 @@ wait-until-port-4422() {
     set -e
 }
 
-ssh-vbox-vm() {
+ssh-vbox() {
     sshpass -p root ssh -o StrictHostKeyChecking=no -o ConnectTimeout=1 -p 4422 root@${hostname:-localhost} $@
 }
 
