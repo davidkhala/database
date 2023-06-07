@@ -11,13 +11,14 @@ db-health() {
 wait-until-health() {
   counter=0
   while true; do
-    if db-health; then
-      break
-    else
-      ((counter++))
-      sleep 1
-      echo ${counter} times retry
-    fi
+    # if db-health; then
+    #   break
+    # else
+    #   ((counter++))
+    #   sleep 1
+    #   echo ${counter} times retry
+    # fi
+    pdestate -a
   done
 }
 $@
