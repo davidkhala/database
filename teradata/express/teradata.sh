@@ -51,15 +51,16 @@ set-autostart() {
 
 }
 setup-vm() {
-    sudo apt-get install -y netcat
-    wait-until-port-4422
     sudo apt-get install -y sshpass
+    wait-until-port-4422
+    
     ssh-vbox-vm "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
 }
 wait-until-port-4422() {
     local counter=0
+    set +e
     while true; do
-        if nc -w 1 -z ${hostname:-localhost} 4422; then
+        if ssh-vbox-vm "true"; then
             break
         else
             ((counter++))
@@ -68,11 +69,11 @@ wait-until-port-4422() {
         fi
 
     done
-
+    set -e
 }
 
 ssh-vbox-vm() {
-    sshpass -p root ssh -o StrictHostKeyChecking=no -p 4422 root@${hostname:-localhost} $@
+    sshpass -p root ssh -o StrictHostKeyChecking=no -o ConnectTimeout=1 -p 4422 root@${hostname:-localhost} $@
 }
 
 $@
