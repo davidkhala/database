@@ -20,12 +20,15 @@ setup-vm() {
   export hostname=$(curl -s https://raw.githubusercontent.com/davidkhala/gcp-collections/main/compute/cli/instance.sh | bash -s get-ip ${vm_name})
   curl -s https://raw.githubusercontent.com/davidkhala/databases/main/teradata/express/teradata-vbox.sh | bash -s setup-vm
 }
-delete-vm() {
+terminate() {
   gcloud compute instances delete ${vm_name} --zone=${zone} --quiet
+  gcloud compute firewall-rules delete ${firewall_dev}
+  gcloud compute firewall-rules delete ${firewall_prod}
 }
 housekeep() {
   gcloud compute firewall-rules create ${firewall_prod} --allow=tcp:1025 --description="Allow traffic to teradata-vantage-express" --direction=INGRESS --target-tags=teradata
   gcloud compute firewall-rules delete ${firewall_dev}
 }
+
 
 $@
