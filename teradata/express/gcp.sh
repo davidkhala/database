@@ -19,7 +19,7 @@ setup-vm() {
   gcloud compute ssh ${vm_name} --zone=${zone} --command="./teradata.sh setup"
   export hostname=$(curl -s https://raw.githubusercontent.com/davidkhala/gcp-collections/main/compute/cli/instance.sh | bash -s get-ip ${vm_name})
   
-  curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/express/teradata-vbox.sh | bash -s setup-vm
+  ./teradata.sh setup-vm
   
 }
 terminate() {
