@@ -1,8 +1,9 @@
 set -e
 export VM_IMAGE_DIR="${HOME}/VantageExpress17.20_Sles12"
-mkdir -p $VM_IMAGE_DIR
+
 setup() {
     apt-install
+    mkdir -p $VM_IMAGE_DIR
     download-disks
     start-attach
     set-autostart
