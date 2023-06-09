@@ -19,7 +19,7 @@ wait-until-health() {
     else
       ((counter++))
       sleep 1
-      echo ${counter} times retry
+      echo Wait until DB become healthy ... ${counter} times retry
     fi
     
   done

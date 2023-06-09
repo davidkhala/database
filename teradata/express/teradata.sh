@@ -66,7 +66,7 @@ wait-until-port-4422() {
         else
             ((counter++))
             sleep 1
-            echo ${counter} times retry
+            echo Wait until port 4422 ready ... ${counter} times retry
         fi
 
     done
