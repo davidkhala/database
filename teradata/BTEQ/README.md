@@ -4,6 +4,6 @@
   - Batch mode has error checking and conditional logic, and allows for the work to be done in the background.
 
 
-# Syntax
-Learning
+# Learning
 - https://www.javatpoint.com/teradata-bteq
+
