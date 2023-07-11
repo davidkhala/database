@@ -8,6 +8,9 @@
   3. Stores the synopsis in the Data Dictionary.
   4. The Optimizer uses the synopsis data when it generates its table access and join plans.
 
+## `show view`
+When you run `show view` in Teradata
+- it displays the definition of the view in Data Definition Language (DDL) format, including the select statement used to create the view, the tables involved, and any filters or join conditions used. 
 
 
 
