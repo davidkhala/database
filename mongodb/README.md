@@ -1,0 +1,1 @@
+- Setup to allow CORS, `mongod --bind_ip_all`
