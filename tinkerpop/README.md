@@ -4,3 +4,9 @@ A graph computing framework
 - uses the Gremlin query language.
 
 ## [providers](https://tinkerpop.apache.org/providers.html)
+- CosmosDB
+- Neo4j
+- ArangoDB
+- Amazon Neptune
+- Hadoop (Spark)
+- OrientDB
