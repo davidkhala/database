@@ -10,3 +10,8 @@ A graph computing framework
 - Amazon Neptune
 - Hadoop (Spark)
 - OrientDB
+- TinkerGraph
+
+
+## Refs
+- https://medium.com/p/3dd563638bc2
