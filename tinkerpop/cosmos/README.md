@@ -1,5 +1,5 @@
 https://learn.microsoft.com/en-us/azure/cosmos-db/gremlin/introduction
-- Both vertices and edges are stored as JSON documents.
+
 - Vertices require a partition key
 - You can find your partition key of sample app by 
     1. Select `Data Explorer(数据资源管理器)`
@@ -24,12 +24,9 @@ Add a graph
     - Database id: A database is analogous to a namespace. It is a unit of management for a set of graphs
         - If your are in context of existing database, it can be skipped
     - Graph id: Unique identifier for the graph and used for id-based routing through REST and all SDKs
-    - Partition key: used to automatically distribute data across partitions for scalability. Choose a property in your JSON document that has a wide range of values and evenly distributes request volume
+    - [Partition key](./partition-key.md)
 
 
 
 ## Compatibility
 - [Some features supported by Apache TinkerPop are not available in Azure Cosmos DB.](https://learn.microsoft.com/en-us/azure/cosmos-db/gremlin/support)
-- Partition key is required if 
-    - you create graph containers from the Azure portal, or
-    - you use the 3.x or higher versions of Gremlin drivers
