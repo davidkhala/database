@@ -2,6 +2,7 @@
 By podman
 - podman pull tinkerpop/gremlin-server
 - podman run -it tinkerpop/gremlin-console bash
+  - exit by Ctrl-D
 
 ## Sample App
 ### "Modern" Graph
