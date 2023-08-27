@@ -1,13 +1,18 @@
 
 services:
   gremlin-server:
+    container_name: gremlin-server
     image: tinkerpop/gremlin-server
     restart: always
-    platform: linux/x86_64
     ports:
       - "8182:8182"
     volumes:
       - tinkerpop_data_container:/data
+  gremlin-visualizer:
+    container_name: gremlin-visualizer
+    image: prabushitha/gremlin-visualizer
+    ports:
+      - "3000:3000"
 
 volumes:
   tinkerpop_data_container:
