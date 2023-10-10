@@ -11,6 +11,7 @@ BDR deprecate
 [Spock](https://github.com/pgEdge/spock)
 - ref: https://www.redhat.com/architect/postgresql-multiactive-database
 - by pgEdge.com
+- conflict resolution: the last update wins
 
 
 [EDB replication products](https://www.enterprisedb.com/products/replication)
