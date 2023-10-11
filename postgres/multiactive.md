@@ -11,8 +11,9 @@ BDR deprecate
 [Spock](https://github.com/pgEdge/spock)
 - ref: https://www.redhat.com/architect/postgresql-multiactive-database
 - by pgEdge.com
-- conflict resolution: the last update wins
-
+- conflict resolution:
+    - the last update wins, or
+    - when updates to an incrementing or sum field, Spock uses conflict-free delta-apply columns, altering this column with the delta of the update
 
 [EDB replication products](https://www.enterprisedb.com/products/replication)
 1. EPRS [EDB Replication Server](https://www.enterprisedb.com/docs/eprs/latest/)
