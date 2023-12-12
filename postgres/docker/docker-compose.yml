@@ -6,6 +6,8 @@ services:
   db:
     image: postgres
     restart: always
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_PASSWORD: example
 
@@ -14,3 +16,11 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+     - "80:80"
+    environment:
+     - PGADMIN_DEFAULT_EMAIL=username # TODO know how and why 
+     - PGADMIN_DEFAULT_PASSWORD=password  
