@@ -3,14 +3,13 @@ version: '3.1'
 
 services:
 
-  db:
+  postgres:
     image: postgres
     restart: always
-    ports:
-      - 5432:5432
     environment:
       POSTGRES_PASSWORD: example
-
+    ports:
+      - 5432:5432
   adminer:
     image: adminer
     restart: always
@@ -22,5 +21,5 @@ services:
     ports:
      - "80:80"
     environment:
-     - PGADMIN_DEFAULT_EMAIL=username # TODO know how and why 
-     - PGADMIN_DEFAULT_PASSWORD=password  
+     - PGADMIN_DEFAULT_EMAIL=davidkhala@gmail.com # required env, must be a valid email address
+     - PGADMIN_DEFAULT_PASSWORD=password # required env
