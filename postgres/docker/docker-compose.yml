@@ -3,16 +3,17 @@ name: postgres
 services:
   db:
     image: postgres
-    restart: always
     environment:
       POSTGRES_USER: postgres # default=postgres
       POSTGRES_PASSWORD: example
       POSTGRES_DB: postgres # default=$POSTGRES_USER
+      PGDATA: /var/lib/postgresql/data # data volumne path, default=/var/lib/postgresql/data
     ports:
       - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
   adminer:
     image: adminer
-    restart: always
     ports:
       - 8080:8080
 
@@ -23,3 +24,6 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=davidkhala@gmail.com # required env, must be a valid email address
       - PGADMIN_DEFAULT_PASSWORD=password # required env
+volumes:
+  postgres:
+    
