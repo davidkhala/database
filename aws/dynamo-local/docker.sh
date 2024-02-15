@@ -2,7 +2,7 @@ set -e
 run() {
     # Default with options: -inMemory
     # Default without options: -sharedDb
-    docker run -p 8000:8000 amazon/dynamodb-local
+    docker run -d -p 8000:8000 --name=dynamodb-local amazon/dynamodb-local
 }
 
 run-advanced() {
