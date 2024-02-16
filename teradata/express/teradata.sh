@@ -22,7 +22,7 @@ download-disks() {
     7z x $VM_IMAGE_DIR/ve.7z
 }
 create-vbox() {
-    
+
     vboxmanage createvm --name "$VM_NAME" --register --ostype openSUSE_64
     vboxmanage modifyvm "$VM_NAME" --ioapic on --memory 6000 --vram 128 --nic1 nat --cpus 4
     vboxmanage storagectl "$VM_NAME" --name "SATA Controller" --add sata --controller IntelAhci
@@ -41,13 +41,13 @@ create-vbox() {
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 
 }
-stop-vbox(){
-    VBoxManage controlvm "$VM_NAME" acpipowerbutton
+stop-vbox() {
+    vboxmanage controlvm "$VM_NAME" acpipowerbutton
 }
-start-vbox(){
+start-vbox() {
     vboxmanage startvm "$VM_NAME" --type headless
 }
-stop(){
+stop() {
     stop-vbox
     sudo shutdown -h now
 }
@@ -63,7 +63,7 @@ set-autostart() {
 setup-vbox() {
     sudo apt-get install -y sshpass
     wait-until-port-4422
-    
+
     ssh-vbox "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
     # Generally, it will success after ~120 retry times
 }
