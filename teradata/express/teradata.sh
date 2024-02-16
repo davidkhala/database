@@ -67,8 +67,9 @@ stop() {
 }
 
 set-autostart() {
-    # FIXME this is broken
     
+    curl https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvirtualbox | sudo tee -a /etc/default/virtualbox
+
     sudo wget -O /etc/systemd/system/vantage-express.service https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvantage-express.service
 
     
