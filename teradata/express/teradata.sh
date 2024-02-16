@@ -61,6 +61,10 @@ stop-vbox() {
 start-vbox() {
     vboxmanage startvm "$VM_NAME" --type headless
 }
+start-vbox-sync(){
+    start-vbox
+    wait-until-ready
+}
 stop() {
     stop-vbox
     sudo shutdown -h now
