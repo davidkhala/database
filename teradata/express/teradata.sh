@@ -38,7 +38,7 @@ create-vbox() {
     vboxmanage storageattach "$VM_NAME" --storagectl "SATA Controller" --port 2 --device 0 --type hdd --medium "$(find $VM_IMAGE_DIR -name '*disk3*')"
     vboxmanage modifyvm "$VM_NAME" --natpf1 "tdssh,tcp,,4422,,22"
     vboxmanage modifyvm "$VM_NAME" --natpf1 "tddb,tcp,,1025,,1025"
-    start-vbox
+    start-vbox-async
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 
 }
@@ -58,11 +58,11 @@ stop-vbox() {
     set -e
     done
 }
-start-vbox() {
+start-vbox-async() {
     vboxmanage startvm "$VM_NAME" --type headless
 }
-start-vbox-sync(){
-    start-vbox
+start-vbox(){
+    start-vbox-async
     wait-until-ready
 }
 stop() {
