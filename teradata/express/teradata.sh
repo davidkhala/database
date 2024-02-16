@@ -8,6 +8,7 @@ setup() {
     download-disks
     create-vbox
     set-autostart
+    wait-until-ready
 }
 
 apt-install() {
