@@ -43,6 +43,19 @@ create-vbox() {
 }
 stop-vbox() {
     vboxmanage controlvm "$VM_NAME" acpipowerbutton
+    local counter=0
+
+    while true; do
+        if vboxmanage list runningvms | grep $VM_NAME; then
+            ((counter++))
+            sleep 1
+            echo Stopping $VM_NAME ...
+
+        else
+            break
+        fi
+
+    done
 }
 start-vbox() {
     vboxmanage startvm "$VM_NAME" --type headless
