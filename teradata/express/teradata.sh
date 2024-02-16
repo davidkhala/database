@@ -67,10 +67,11 @@ stop() {
 }
 
 set-autostart() {
-    sudo wget -O /etc/default/virtualbox https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvirtualbox
+    # FIXME this is broken
+    
     sudo wget -O /etc/systemd/system/vantage-express.service https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvantage-express.service
 
-    sudo systemctl daemon-reload
+    
     sudo systemctl enable vantage-express # inline start can fail due to vantage-express vm is running.
 
 }
