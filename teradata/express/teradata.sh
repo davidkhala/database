@@ -73,7 +73,7 @@ set-autostart() {
     sudo systemctl enable vantage-express # inline start can fail due to vantage-express vm is running.
 
 }
-setup-vbox() {
+wait-until-ready() {
     sudo apt-get install -y sshpass
     wait-until-port-4422
 
