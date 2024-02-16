@@ -56,6 +56,7 @@ setup-vbox() {
     wait-until-port-4422
     
     ssh-vbox "curl https://raw.githubusercontent.com/davidkhala/databases/main/teradata/teradata.sh -O; chmod +x ./teradata.sh; ./teradata.sh wait-until-health"
+    # Generally, it will success after ~120 retry times
 }
 wait-until-port-4422() {
     local counter=0
@@ -71,6 +72,7 @@ wait-until-port-4422() {
 
     done
     set -e
+    # Generally, it will success after ~40 retry times
 }
 
 ssh-vbox() {
