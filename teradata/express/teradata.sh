@@ -7,7 +7,7 @@ setup() {
     mkdir -p $VM_IMAGE_DIR
     download-disks
     create-vbox
-    set-autostart
+    
     wait-until-ready
 }
 
