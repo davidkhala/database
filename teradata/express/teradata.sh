@@ -7,7 +7,7 @@ setup() {
     mkdir -p $VM_IMAGE_DIR
     download-disks
     create-vbox
-    
+    set-autostart
     wait-until-ready
 }
 
@@ -71,12 +71,12 @@ stop() {
 }
 
 set-autostart() {
-    
-    curl https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvirtualbox | sudo tee -a /etc/default/virtualbox
 
+    
     sudo wget -O /etc/systemd/system/vantage-express.service https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvantage-express.service
+    sudo systemctl daemon-reload
 
-    
+    # needs vbox vm installed under root user, otherwise the systemd service will fail to start
     sudo systemctl enable vantage-express # inline start can fail due to vantage-express vm is running.
 
 }
