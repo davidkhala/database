@@ -1,11 +1,12 @@
 set -e
 export VM_IMAGE_DIR="${HOME}/VantageExpress17.20_Sles12"
-
+DEFAULT_VM_NAME="vantage-express"
+VM_NAME="${VM_NAME:-$DEFAULT_VM_NAME}"
 setup() {
     apt-install
     mkdir -p $VM_IMAGE_DIR
     download-disks
-    start-attach
+    create-vbox
     set-autostart
 }
 
@@ -20,10 +21,8 @@ download-disks() {
     wget -O $VM_IMAGE_DIR/ve.7z https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2FVantageExpress17.20_Sles12_20230220064202.7z
     7z x $VM_IMAGE_DIR/ve.7z
 }
-start-attach() {
-
-    DEFAULT_VM_NAME="vantage-express"
-    VM_NAME="${VM_NAME:-$DEFAULT_VM_NAME}"
+create-vbox() {
+    
     vboxmanage createvm --name "$VM_NAME" --register --ostype openSUSE_64
     vboxmanage modifyvm "$VM_NAME" --ioapic on --memory 6000 --vram 128 --nic1 nat --cpus 4
     vboxmanage storagectl "$VM_NAME" --name "SATA Controller" --add sata --controller IntelAhci
@@ -38,9 +37,19 @@ start-attach() {
     vboxmanage storageattach "$VM_NAME" --storagectl "SATA Controller" --port 2 --device 0 --type hdd --medium "$(find $VM_IMAGE_DIR -name '*disk3*')"
     vboxmanage modifyvm "$VM_NAME" --natpf1 "tdssh,tcp,,4422,,22"
     vboxmanage modifyvm "$VM_NAME" --natpf1 "tddb,tcp,,1025,,1025"
-    vboxmanage startvm "$VM_NAME" --type headless
+    start-vbox
     vboxmanage controlvm "$VM_NAME" keyboardputscancode 1c 1c
 
+}
+stop-vbox(){
+    VBoxManage controlvm "$VM_NAME" acpipowerbutton
+}
+start-vbox(){
+    vboxmanage startvm "$VM_NAME" --type headless
+}
+stop(){
+    stop-vbox
+    sudo shutdown -h now
 }
 
 set-autostart() {
