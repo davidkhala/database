@@ -6,8 +6,8 @@ db-health() {
   if ! echo $message | grep "PDE state is RUN/STARTED."; then
     return 1
   fi
-  if ! echo $message | grep "DBS state is 5: Logons are enabled - The system is quiescent"; then
-    return 1
+  if ! echo $message | grep "Logons are enabled"; then
+      return 1
   fi
 }
 wait-until-health() {
