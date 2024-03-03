@@ -8,6 +8,12 @@ services:
       POSTGRES_PASSWORD: example
       POSTGRES_DB: postgres # default=$POSTGRES_USER
       PGDATA: /var/lib/postgresql/data # data volumne path, default=/var/lib/postgresql/data
+    healthcheck:
+      test: "pg_isready"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
     ports:
       - 5432:5432
     volumes:
