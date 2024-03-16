@@ -5,6 +5,7 @@ the databases index
 ## Related projects
 - [nodejs](https://github.com/davidkhala/node-databases)
 - [Oracle DB](https://github.com/davidkhala/oracle-database-collection)
+- [Native MySQL](https://github.com/davidkhala/mysql-toolset)
 
 Cloud vendor locked DB
 - AWS
