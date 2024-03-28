@@ -1,0 +1,3 @@
+docker login registry.redhat.io
+
+docker pull registry.redhat.io/datagrid/datagrid-8-rhel8
