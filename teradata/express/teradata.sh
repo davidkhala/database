@@ -73,7 +73,7 @@ stop() {
 set-autostart() {
 
     
-    sudo wget -O /etc/systemd/system/vantage-express.service https://objectstorage.ap-singapore-1.oraclecloud.com/n/cn9yc2hk0gzg/b/installation-binary/o/teradata%2Fvantage-express.service
+    sudo wget -O /etc/systemd/system/vantage-express.service https://raw.githubusercontent.com/davidkhala/databases/main/teradata/express/autostart/vantage-express.service
     sudo systemctl daemon-reload
 
     # needs vbox vm installed under root user, otherwise the systemd service will fail to start
