@@ -2,6 +2,7 @@ version: '3.1'
 name: mssql
 services:
   db:
+    container_name: mssql
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       ACCEPT_EULA: Y
