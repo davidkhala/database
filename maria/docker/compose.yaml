@@ -1,0 +1,17 @@
+name: mariadb
+services:
+  legacy-bitnami:
+    image: bitnami/mariadb:5.5.48-0-r01
+  official:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+  alpine:
+    image: alpinelinux/mariadb # Version: '10.5.9-MariaDB'
+    environment:
+      MARIADB_PASSWORD: password
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
