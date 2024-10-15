@@ -4,9 +4,11 @@ db_bin=$(echo /usr/edb/as*/bin)
 db_user=enterprisedb
 setup(){
   # post install
-  sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as*/bin/edb-as-11-setup initdb
+  sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as*/bin/edb-as-*-setup initdb
   start
-  sudo passwd $db_user
+
+  # interactive setup initial password for default DB user
+  sudo passwd $db_user 
 }
 start(){
   # systemctl { start | stop | restart } edb-as-*  
