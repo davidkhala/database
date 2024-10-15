@@ -1,0 +1,1 @@
+db_bin=$(echo /usr/edb/as*/bin)
