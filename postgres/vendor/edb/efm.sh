@@ -6,6 +6,21 @@ version() {
    efm --version
 }
 
+password-swap(){
+   # Interactive 
+   local password=$1
+   local cluster_name=efm
+   if [ -n $password ]; then
+      export EFMPASS=$password
+      efm encrypt $cluster_name --from-env
+   else
+      efm encrypt $cluster_name
+   fi
+   
+   
+}
+
+
 configure() {
    cd /etc/edb/efm-*/
    sudo cp efm.properties.in efm.properties
