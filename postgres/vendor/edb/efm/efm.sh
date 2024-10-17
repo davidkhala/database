@@ -28,7 +28,6 @@ setup() {
    config_path="/etc/edb/efm-$efm_version/$cluster_name.properties"
    sudo cp /etc/edb/efm-$efm_version/efm.properties.in $config_path
    sudo chown efm:efm $config_path
-   
 }
 configure-cluster() {
    local password=$1

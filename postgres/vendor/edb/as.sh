@@ -1,6 +1,6 @@
 set -e
 db_user=enterprisedb
-db_version=$(echo /usr/edb/as*/bin/ | awk -F/ '{print $4}'| cut -c 3-)
+db_version=$(echo /usr/edb/as*/bin/ | awk -F/ '{print $4}' | cut -c 3-)
 setup() {
   # post install
   sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as$db_version/bin/edb-as-$db_version-setup initdb
@@ -17,15 +17,20 @@ setup() {
 
 }
 start() {
-  # systemctl { start | stop | restart } edb-as-*
   local service_name=edb-as-$db_version.service
 
   sudo systemctl enable --now $service_name
 }
-
-connect() {
+configure-authN() {
+  sudo vi /var/lib/edb/as$db_version/data/pg_hba.conf
+  # TODO change method=peer to method=trust|md5
+}
+connect-peer() {
   # peer authN: the default AuthN method
   sudo -u $db_user psql -U $db_user -d edb $@
+}
+connect() {
+  psql -U $db_user -d edb $@
 }
 
 $@
