@@ -56,7 +56,7 @@ configure-cluster() {
    curl $remote_edit | bash -s configure db.bin=$db_bin efm.properties
 
    # db.data.dir: Same as the output of query `show data_directory;`. It is newly introduced in EFM 4.0 for pg 12. Equivalent to `db.recovery.conf.dir` in EFM 3.x
-   curl $remote_edit | bash -s configure db.recovery.conf.dir=/var/lib/edb/$db_version/data efm.properties # For legacy
+   curl $remote_edit | bash -s configure db.data.dir=/var/lib/edb/$db_version/data efm.properties
    # TODO The 'user.email' or 'script.notification' property must be set. # For legacy
 
    cd -

@@ -1,8 +1,9 @@
 set -e
 db_user=enterprisedb
+db_version=$(echo /usr/edb/as*/bin/ | awk -F/ '{print $4}'| cut -c 3-4)
 setup() {
   # post install
-  sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as*/bin/edb-as-*-setup initdb
+  sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as$db_version/bin/edb-as-$db_version-setup initdb
   start
 
   # Setup initial password for default DB user
@@ -17,7 +18,7 @@ setup() {
 }
 start() {
   # systemctl { start | stop | restart } edb-as-*
-  local service_name=$(systemctl list-units --type=service --all | grep edb-as- | awk '{print $1}')
+  local service_name=edb-as-$db_version.service
 
   sudo systemctl enable --now $service_name
 }
