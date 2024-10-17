@@ -1,6 +1,6 @@
 set -e
 db_user=enterprisedb
-db_version=$(echo /usr/edb/as*/bin/ | awk -F/ '{print $4}'| cut -c 3-4)
+db_version=$(echo /usr/edb/as*/bin/ | awk -F/ '{print $4}'| cut -c 3-)
 setup() {
   # post install
   sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as$db_version/bin/edb-as-$db_version-setup initdb
