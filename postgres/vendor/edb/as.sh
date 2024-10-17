@@ -22,8 +22,10 @@ start() {
   sudo systemctl enable --now $service_name
 }
 configure-authN() {
+  # Refer: https://www.postgresql.org/docs/current/auth-pg-hba-conf.html
   sudo vi /var/lib/edb/as$db_version/data/pg_hba.conf
-  # TODO change method=peer to method=trust|md5
+  # change method=peer to method=trust|md5 for 127.0.0.1
+  
 }
 connect-peer() {
   # peer authN: the default AuthN method
