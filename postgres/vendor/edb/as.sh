@@ -5,8 +5,15 @@ setup() {
   sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as*/bin/edb-as-*-setup initdb
   start
 
-  # interactive setup initial password for default DB user
-  sudo passwd $db_user
+  # Setup initial password for default DB user
+  local password=$1
+  if [[ -n $password ]]; then
+    echo "$password" | sudo passwd $db_user --stdin
+  else
+    # Interactive
+    sudo passwd $db_user
+  fi
+
 }
 start() {
   # systemctl { start | stop | restart } edb-as-*
