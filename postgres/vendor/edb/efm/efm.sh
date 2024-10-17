@@ -1,6 +1,7 @@
 set -e -x
 cluster_name=efm
 efm_version=$(echo /usr/edb/efm-*/ | awk -F/ '{print $4}' | cut -c 5- )
+config_path="/etc/edb/efm-$efm_version/$cluster_name.properties"
 status() {
    /usr/edb/efm-*/bin/efm cluster-status $cluster_name
 }
@@ -25,7 +26,6 @@ passwd-swap() {
 }
 
 setup() {
-   config_path="/etc/edb/efm-$efm_version/$cluster_name.properties"
    sudo cp /etc/edb/efm-$efm_version/efm.properties.in $config_path
    sudo chown efm:efm $config_path
 }
@@ -40,8 +40,6 @@ configure-cluster() {
    local db_bin=$(echo /usr/edb/as*/bin)
    local db_version=$(echo $db_bin | awk -F/ '{print $4}')
    local remote_edit="https://raw.githubusercontent.com/davidkhala/linux-utils/refs/heads/main/editors.sh"
-
-   local config_path="/etc/edb/efm-$efm_version/$cluster_name.properties"
 
    curl $remote_edit | bash -s configure db.user=enterprisedb $config_path
    curl $remote_edit | bash -s configure db.port=5444 $config_path
