@@ -9,27 +9,23 @@ status() {
    tail /var/log/efm-$efm_version/startup-efm.log
    /usr/edb/efm-*/bin/efm cluster-status $cluster_name
 }
-start() {
-   sudo systemctl enable --now edb-efm-$efm_version
-}
 
 passwd-swap() {
 
-   local password=$1
-
-   if [[ -n $password ]]; then
-      export EFMPASS=$password
-      /usr/edb/efm-*/bin/efm encrypt $cluster_name --from-env
-   else
-      # Interactive
-      /usr/edb/efm-*/bin/efm encrypt $cluster_name
+   if [[ -z $EFMPASS ]]; then
+      export EFMPASS=$1
+      if [[ -z $EFMPASS ]]; then
+         # Interactive
+         /usr/edb/efm-*/bin/efm encrypt $cluster_name
+         return
+      fi
    fi
+   /usr/edb/efm-*/bin/efm encrypt $cluster_name --from-env
 
 }
 
 setup() {
-   local overwrite=$1
-
+   
    if [ ! -f $config_path ] || [[ -n $overwrite ]]; then
       sudo cp /etc/edb/efm-$efm_version/efm.properties.in $config_path
       sudo chown efm:efm $config_path
@@ -44,8 +40,9 @@ setup() {
       sudo cp ./logger.sh $db_bin/logger.sh
       sudo chown efm:efm $db_bin/logger.sh
    fi
-   configure-cluster
-   start
+   configure-cluster $1
+   
+   sudo systemctl enable --now edb-efm-$efm_version
 }
 
 configure(){
@@ -56,9 +53,7 @@ configure(){
 }
 
 configure-cluster() {
-   local password=$1
-
-   local password_e=$(passwd-swap $password)
+   local password_e=$(passwd-swap $1)
    local db_version=$(echo $db_bin | awk -F/ '{print $4}')
    local remote_edit="https://raw.githubusercontent.com/davidkhala/linux-utils/refs/heads/main/editors.sh"
 
@@ -66,7 +61,7 @@ configure-cluster() {
       user_email=$(git config user.email)
       if [[ -z $user_email ]]; then
          echo user.email is required
-         exit 1
+         return 1
       fi
    fi
 
