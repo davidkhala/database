@@ -62,6 +62,7 @@ configure-cluster() {
       fi
    fi
 
+   # TODO can use Ansible Template to configure properties
    # TODO the configurer will add new line on empty value entry
    curl $remote_edit | bash -s configure db.user=enterprisedb $config_path
    curl $remote_edit | bash -s configure db.port=5444 $config_path
