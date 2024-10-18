@@ -48,6 +48,13 @@ setup() {
    start
 }
 
+configure(){
+   sudo vi "/etc/edb/efm-$efm_version/$cluster_name.properties"
+   sudo systemctl restart edb-efm-$efm_version
+   status
+   
+}
+
 configure-cluster() {
    local password=$1
 
@@ -71,7 +78,7 @@ configure-cluster() {
    curl $remote_edit | bash -s configure is.witness=false $config_path
    
    # bind.address need to aligned with pg_hba.conf
-   local ip=127.0.0.1 # we need a unique internal ip
+   local ip=$(hostname -i) # internal ip
    curl $remote_edit | bash -s configure bind.address=$ip:7800 $config_path
    
    curl $remote_edit | bash -s configure db.password.encrypted=$password_e $config_path
