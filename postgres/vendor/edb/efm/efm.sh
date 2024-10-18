@@ -25,7 +25,7 @@ passwd-swap() {
 }
 
 setup() {
-   
+
    if [ ! -f $config_path ] || [[ -n $overwrite ]]; then
       sudo cp /etc/edb/efm-$efm_version/efm.properties.in $config_path
       sudo chown efm:efm $config_path
@@ -42,15 +42,11 @@ setup() {
       sudo chown efm:efm $db_bin/logger.sh
    fi
    configure-cluster $1
-   
+
    sudo systemctl enable --now edb-efm-$efm_version
 }
-
-configure(){
-   sudo vi "/etc/edb/efm-$efm_version/$cluster_name.properties"
+restart() {
    sudo systemctl restart edb-efm-$efm_version
-   status
-   
 }
 
 configure-cluster() {
@@ -72,11 +68,11 @@ configure-cluster() {
    curl $remote_edit | bash -s configure db.database=edb $config_path
    curl $remote_edit | bash -s configure db.service.owner=enterprisedb $config_path
    curl $remote_edit | bash -s configure is.witness=false $config_path
-   
+
    # bind.address need to aligned with pg_hba.conf
    local ip=$(hostname -i) # internal ip
    curl $remote_edit | bash -s configure bind.address=$ip:7800 $config_path
-   
+
    curl $remote_edit | bash -s configure db.password.encrypted=$password_e $config_path
    curl $remote_edit | bash -s configure db.bin=$db_bin $config_path
 

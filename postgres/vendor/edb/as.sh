@@ -19,7 +19,7 @@ setup() {
   
   sudo systemctl enable --now $service_name
   # init password for password authN
-  connect-peer -c "ALTER USER $db_user PASSWORD '$password';"
+  sudo -u $db_user psql -U $db_user -d edb -c "ALTER USER $db_user PASSWORD '$password';"
 }
 restart() {
   sudo systemctl restart $service_name
@@ -27,7 +27,7 @@ restart() {
 
 connect-peer() {
   # peer authN is the default AuthN method
-  sudo -u $db_user psql -U $db_user -d edb $@
+  sudo -u $db_user psql -U $db_user -d edb
 }
 connect() {
   psql -U $db_user -h $(hostname) -d edb $@
