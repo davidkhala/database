@@ -37,7 +37,8 @@ setup() {
       sudo chown efm:efm $nodes_config_path
    fi
    if [ ! -f $db_bin/logger.sh ] || [[ -n $overwrite ]]; then
-      sudo cp ./logger.sh $db_bin/logger.sh
+      sudo curl https://raw.githubusercontent.com/davidkhala/database/refs/heads/main/postgres/vendor/edb/efm/logger.sh -o $db_bin/logger.sh
+      sudo chmod +x $db_bin/logger.sh
       sudo chown efm:efm $db_bin/logger.sh
    fi
    configure-cluster $1
