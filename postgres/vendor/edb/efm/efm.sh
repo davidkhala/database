@@ -50,19 +50,29 @@ restart() {
 }
 
 configure-cluster() {
-   local password_e=$(passwd-swap $1)
+   local password=$1
+   if [[ -z $password ]]; then
+      echo password is required
+      return 1
+   fi
+
+   local password_e=$(passwd-swap $password)
    local db_version=$(echo $db_bin | awk -F/ '{print $4}')
    local remote_edit="https://raw.githubusercontent.com/davidkhala/linux-utils/refs/heads/main/editors.sh"
 
    if [[ -z $user_email ]]; then
-      user_email=$(git config user.email)
-      if [[ -z $user_email ]]; then
-         echo user.email is required
+      if git config user.email; then
+         user_email=$(git config user.email)
+         if [[ -z $user_email ]]; then
+            echo "user.email is required"
+            return 1
+         fi
+      else
+         echo "user.email is required"
          return 1
       fi
    fi
 
-   # TODO can use Ansible Template to configure properties
    # TODO the configurer will add new line on empty value entry
    curl $remote_edit | bash -s configure db.user=enterprisedb $config_path
    curl $remote_edit | bash -s configure db.port=5444 $config_path
