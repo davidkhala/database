@@ -7,7 +7,7 @@ setup() {
   sudo PGSETUP_INITDB_OPTIONS="-E UTF-8" /usr/edb/as$db_version/bin/edb-as-$db_version-setup initdb
   # Refer: https://www.postgresql.org/docs/current/auth-pg-hba-conf.html
   echo "host    all             all             0.0.0.0/0               md5" | sudo tee -a /var/lib/edb/as$db_version/data/pg_hba.conf
-
+  echo "host    replication     all             0.0.0.0/0               md5" | sudo tee -a /var/lib/edb/as$db_version/data/pg_hba.conf # TODO
   # init password for Peer authN
   local password=$1
   if [[ -n $password ]]; then
