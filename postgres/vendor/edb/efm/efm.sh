@@ -58,25 +58,17 @@ configure-cluster() {
 
    local password_e=$(passwd-swap $password)
    local db_version=$(echo $db_bin | awk -F/ '{print $4}')
-   
 
    if [[ -z $user_email ]]; then
       if git config user.email; then
          user_email=$(git config user.email)
-         if [[ -z $user_email ]]; then
-            echo "user.email is required"
-            return 1
-         fi
-      else
-         echo "user.email is required"
-         return 1
       fi
    fi
 
-   curl https://raw.githubusercontent.com/davidkhala/linux-utils/refs/heads/main/editors.sh > editors.sh
-   
+   curl https://raw.githubusercontent.com/davidkhala/linux-utils/refs/heads/main/editors.sh >editors.sh
+
    chmod +x editors.sh
-   
+
    ./editors.sh | bash -s configure db.user=enterprisedb $config_path
    ./editors.sh | bash -s configure db.port=5444 $config_path
    ./editors.sh | bash -s configure db.database=edb $config_path
@@ -93,7 +85,12 @@ configure-cluster() {
 
    # db.data.dir: Same as the output of query `show data_directory;`. It is newly introduced in EFM 4.0 for pg 12. Equivalent to `db.recovery.conf.dir` in EFM 3.x
    ./editors.sh | bash -s configure db.data.dir=/var/lib/edb/$db_version/data $config_path "|"
-   ./editors.sh | bash -s configure script.notification=$db_bin/logger.sh $config_path "|"
+   if [[ -z $user_email ]]; then
+      ./editors.sh | bash -s configure script.notification=$db_bin/logger.sh $config_path "|"
+   else
+      ./editors.sh | bash -s configure user.email=$user_email $config_path
+   fi
+
    rm editors.sh
 }
 
