@@ -69,26 +69,26 @@ configure-cluster() {
 
    chmod +x editors.sh
 
-   ./editors.sh | bash -s configure db.user=enterprisedb $config_path
-   ./editors.sh | bash -s configure db.port=5444 $config_path
-   ./editors.sh | bash -s configure db.database=edb $config_path
-   ./editors.sh | bash -s configure db.service.owner=enterprisedb $config_path
-   ./editors.sh | bash -s configure is.witness=false $config_path
+   ./editors.sh configure db.user=enterprisedb $config_path
+   ./editors.sh configure db.port=5444 $config_path
+   ./editors.sh configure db.database=edb $config_path
+   ./editors.sh configure db.service.owner=enterprisedb $config_path
+   ./editors.sh configure is.witness=false $config_path
 
    # bind.address need to aligned with pg_hba.conf
    local ip=$(hostname -i) # internal ip
 
-   ./editors.sh | bash -s configure bind.address=$ip:7800 $config_path
+   ./editors.sh configure bind.address=$ip:7800 $config_path
 
-   ./editors.sh | bash -s configure db.password.encrypted=$password_e $config_path
-   ./editors.sh | bash -s configure db.bin=$db_bin $config_path "|"
+   ./editors.sh configure db.password.encrypted=$password_e $config_path
+   ./editors.sh configure db.bin=$db_bin $config_path "|"
 
    # db.data.dir: Same as the output of query `show data_directory;`. It is newly introduced in EFM 4.0 for pg 12. Equivalent to `db.recovery.conf.dir` in EFM 3.x
-   ./editors.sh | bash -s configure db.data.dir=/var/lib/edb/$db_version/data $config_path "|"
+   ./editors.sh configure db.data.dir=/var/lib/edb/$db_version/data $config_path "|"
    if [[ -z $user_email ]]; then
-      ./editors.sh | bash -s configure script.notification=$db_bin/logger.sh $config_path "|"
+      ./editors.sh configure script.notification=$db_bin/logger.sh $config_path "|"
    else
-      ./editors.sh | bash -s configure user.email=$user_email $config_path
+      ./editors.sh configure user.email=$user_email $config_path
    fi
 
    rm editors.sh
