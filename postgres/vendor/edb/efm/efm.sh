@@ -85,11 +85,11 @@ configure-cluster() {
    curl $remote_edit | bash -s configure bind.address=$ip:7800 $config_path
 
    curl $remote_edit | bash -s configure db.password.encrypted=$password_e $config_path
-   curl $remote_edit | bash -s configure db.bin=$db_bin $config_path
+   curl $remote_edit | bash -s configure db.bin=$db_bin $config_path "|"
 
    # db.data.dir: Same as the output of query `show data_directory;`. It is newly introduced in EFM 4.0 for pg 12. Equivalent to `db.recovery.conf.dir` in EFM 3.x
-   curl $remote_edit | bash -s configure db.data.dir=/var/lib/edb/$db_version/data $config_path
-   curl $remote_edit | bash -s configure script.notification=$db_bin/logger.sh $config_path
+   curl $remote_edit | bash -s configure db.data.dir=/var/lib/edb/$db_version/data $config_path "|"
+   curl $remote_edit | bash -s configure script.notification=$db_bin/logger.sh $config_path "|"
 
 }
 
