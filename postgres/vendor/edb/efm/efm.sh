@@ -33,6 +33,7 @@ setup() {
 
    if [ ! -f $nodes_config_path ] || [[ -n $overwrite ]]; then
       # The cluster members file on the first node started can be empty.
+      # When an agent starts, it uses the file to locate other cluster members.
       sudo cp /etc/edb/efm-$efm_version/efm.nodes.in $nodes_config_path
       sudo chown efm:efm $nodes_config_path
    fi
@@ -74,6 +75,7 @@ configure-cluster() {
    ./editors.sh configure db.database=edb $config_path
    ./editors.sh configure db.service.owner=enterprisedb $config_path
    ./editors.sh configure is.witness=false $config_path
+   ./editors.sh configure auto.allow.hosts=true $config_path
 
    # bind.address need to aligned with pg_hba.conf
    local ip=$(hostname -i) # internal ip
