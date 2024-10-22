@@ -75,7 +75,9 @@ configure-cluster() {
    ./editors.sh configure db.database=edb $config_path
    ./editors.sh configure db.service.owner=enterprisedb $config_path
    ./editors.sh configure is.witness=false $config_path
-   ./editors.sh configure auto.allow.hosts=true $config_path
+
+   ./editors.sh configure auto.allow.hosts=true $config_path  # true for test
+   ./editors.sh configure stable.nodes.file=true $config_path # true for test
 
    # bind.address need to aligned with pg_hba.conf
    local ip=$(hostname -i) # internal ip
@@ -92,6 +94,9 @@ configure-cluster() {
    else
       ./editors.sh configure user.email=$user_email $config_path
    fi
+
+   local db_version=$(echo /usr/edb/as*/bin/ | awk -F/ '{print $4}' | cut -c 3-)
+   ./editors.sh configure db.service.name=edb-as-$db_version $config_path # optional
 
    rm editors.sh
 }
