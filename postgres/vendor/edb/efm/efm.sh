@@ -58,7 +58,7 @@ configure-cluster() {
 
    local password_e=$(passwd-swap $password)
    local db_version=$(echo $db_bin | awk -F/ '{print $4}')
-   local remote_edit="https://raw.githubusercontent.com/davidkhala/linux-utils/refs/heads/main/editors.sh"
+   
 
    if [[ -z $user_email ]]; then
       if git config user.email; then
@@ -73,24 +73,28 @@ configure-cluster() {
       fi
    fi
 
-   # TODO the configurer will add new line on empty value entry
-   curl $remote_edit | bash -s configure db.user=enterprisedb $config_path
-   curl $remote_edit | bash -s configure db.port=5444 $config_path
-   curl $remote_edit | bash -s configure db.database=edb $config_path
-   curl $remote_edit | bash -s configure db.service.owner=enterprisedb $config_path
-   curl $remote_edit | bash -s configure is.witness=false $config_path
+   curl https://raw.githubusercontent.com/davidkhala/linux-utils/refs/heads/main/editors.sh > editors.sh
+   
+   chmod +x editors.sh
+   
+   ./editors.sh | bash -s configure db.user=enterprisedb $config_path
+   ./editors.sh | bash -s configure db.port=5444 $config_path
+   ./editors.sh | bash -s configure db.database=edb $config_path
+   ./editors.sh | bash -s configure db.service.owner=enterprisedb $config_path
+   ./editors.sh | bash -s configure is.witness=false $config_path
 
    # bind.address need to aligned with pg_hba.conf
    local ip=$(hostname -i) # internal ip
-   curl $remote_edit | bash -s configure bind.address=$ip:7800 $config_path
 
-   curl $remote_edit | bash -s configure db.password.encrypted=$password_e $config_path
-   curl $remote_edit | bash -s configure db.bin=$db_bin $config_path "|"
+   ./editors.sh | bash -s configure bind.address=$ip:7800 $config_path
+
+   ./editors.sh | bash -s configure db.password.encrypted=$password_e $config_path
+   ./editors.sh | bash -s configure db.bin=$db_bin $config_path "|"
 
    # db.data.dir: Same as the output of query `show data_directory;`. It is newly introduced in EFM 4.0 for pg 12. Equivalent to `db.recovery.conf.dir` in EFM 3.x
-   curl $remote_edit | bash -s configure db.data.dir=/var/lib/edb/$db_version/data $config_path "|"
-   curl $remote_edit | bash -s configure script.notification=$db_bin/logger.sh $config_path "|"
-
+   ./editors.sh | bash -s configure db.data.dir=/var/lib/edb/$db_version/data $config_path "|"
+   ./editors.sh | bash -s configure script.notification=$db_bin/logger.sh $config_path "|"
+   rm editors.sh
 }
 
 $@
