@@ -1,7 +1,7 @@
 set -e
 db_user=enterprisedb
 db_version=$(echo /usr/edb/as*/bin/ | awk -F/ '{print $4}' | cut -c 3-)
-service_name=edb-as-$db_version.service
+service_name=edb-as-$db_version
 
 setup() {
   # post install
