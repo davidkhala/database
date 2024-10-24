@@ -76,8 +76,6 @@ configure-cluster() {
    ./editors.sh configure db.service.owner=enterprisedb $config_path
    ./editors.sh configure is.witness=false $config_path
 
-   ./editors.sh configure auto.allow.hosts=true $config_path
-
    # bind.address need to aligned with pg_hba.conf
    local ip=$(hostname -i) # internal ip
 
