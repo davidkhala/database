@@ -5,3 +5,6 @@
 ## Indexing
 No auto indexing
 - alternative: use Performance Advisor and **manually** apply recommendations.
+
+## Queryable Encryption
+Not available in mongodb compatitle system
