@@ -1,6 +1,10 @@
 # sqlcmd utility
 
-It is Preinstalled in Azure Cloud Shell, Azure Data Studio, SSMS
+It is preinstalled in
+- Azure Cloud Shell
+- Azure Data Studio as a syntax support in query file
+  - `bcp` excluded
+- SSMS
 
 
 # Limit
