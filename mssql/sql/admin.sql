@@ -2,6 +2,10 @@
 SELECT *
 FROM information_schema.tables
 
+-- show databases
+SELECT name, create_date
+FROM sys.databases
+  
 -- enable SA
 ALTER LOGIN [sa] ENABLE
 
