@@ -1,4 +1,9 @@
+# sqlcmd utility
 
+It is Preinstalled in Azure Cloud Shell, Azure Data Studio, SSMS
+
+
+# Limit
 Run a Single Statement
 - It’s not sufficient to end a line with a `;`, you have to use `GO`.
 ```
