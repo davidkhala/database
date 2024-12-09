@@ -5,7 +5,7 @@
   - >created when needed, not when selected
 - Setup to allow CORS, `mongod --bind_ip_all`
 - internal databases `admin` and `local` should be prevented from Applications
-  - `local`: host the oplog. See in https://www.mongodb.com/docs/manual/reference/local-database/#the-local-database
+  - `local`: host the [oplog](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-oplog). See in https://www.mongodb.com/docs/manual/reference/local-database/#the-local-database
   - `admin`: host users
 ## Indexing
 No auto indexing
