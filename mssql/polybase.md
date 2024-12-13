@@ -8,3 +8,6 @@
 - Azure Blob
 - Azure Data Lake Store
 - 以上系统中的半结构化数据如csv
+
+# Limit
+> PolyBase can't load rows that have more than 1,000,000 bytes of data
