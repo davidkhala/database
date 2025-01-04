@@ -1,5 +1,6 @@
 # Mongo DB
 - MongoDB uses [BSON](https://bsonspec.org/) to store document.
+  - BSON extends data types of JSON, e.g., `datetime`, `int`, `long`, `date`, floating point, `decimal128`, and byte array
 - `_id_` is indexed by default
 - MongoDB only creates the database when you first store data in that database. This data could be a collection or even a document.
   - >created when needed, not when selected
