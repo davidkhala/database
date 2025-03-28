@@ -1,7 +1,4 @@
+[wiki](https://github.com/davidkhala/database/wiki/Supabase)
 
-postgres compatible
-
-# blogs
-[使用 Next.js 和 Supabase 进行全栈开发](https://www.freecodecamp.org/chinese/news/the-complete-guide-to-full-stack-development-with-supabas/)
 
 
