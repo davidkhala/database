@@ -11,3 +11,6 @@ Supported Platforms
 
 exposed port
 - `59840`: for availability check (by simple http get)
+
+[API](https://docs.couchbase.com/couchbase-edge-server/current/public-api-reference/index.html)
+- There is not language SDK available
