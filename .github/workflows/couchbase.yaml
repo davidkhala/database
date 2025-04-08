@@ -1,0 +1,17 @@
+name: couchbase
+on:
+  push:
+
+
+jobs:
+  capella:
+    environment: couchbase
+    env:
+      CONNECT: ${{ vars.CAPELLA }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: ping
+        run: ./couchbase/cli/sdk-doctor/diagnose.ps1 $env:PASSWORD -Remote couchbases://cb.t-cvjm0osaoa0ge.cloud.couchbase.com
+      
