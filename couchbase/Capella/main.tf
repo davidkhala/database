@@ -6,9 +6,13 @@ terraform {
   }
 }
 variable "CAPELLA_AUTH_TOKEN" {
-  description = "API Secret for Couchbase Capella"
+  description = "API Key Secret"
   type        = string
   sensitive   = true
+}
+variable "organization_id" {
+  description = "Capella Organization ID"
+  default     = "a1ee45af-4265-4aa3-97cb-c10678291f4a"
 }
 
 # Configure the Couchbase Capella Provider 
@@ -16,7 +20,3 @@ provider "couchbase-capella" {
   authentication_token = var.CAPELLA_AUTH_TOKEN
 }
 
-resource "couchbase-capella_project" "project" {
-  organization_id = "a1ee45af-4265-4aa3-97cb-c10678291f4a"
-  name            = "free"
-}
