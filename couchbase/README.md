@@ -13,6 +13,10 @@ Types
 - `Ephemeral`
 - `Memcached`
 
+Shards
+- aka. vBucket
+- Within each Bucket are 1024 vBuckets. Spread out automatically only on Data nodes
+
 Limit
 >
 - > A maximum of 30 buckets can be created in a cluster
@@ -42,6 +46,7 @@ Indexes are defined under scope
 #### Bucket/Scope/Collection/Document
 
 - similar to document level
+- > Individual file upload for documents can be up to 40MB
 
 # Cross-Data Center Replication (XDCR)
 
