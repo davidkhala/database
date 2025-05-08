@@ -1,7 +1,8 @@
 # Indexes
 
 Primary Index: covers all document keys
-
+- Perform a full bucket(??Collection) scan
+- Do not reduce the amount of query search time?
 - used by Developers for ad-hoc query, not for production
 - `CREATE PRIMARY INDEX <index name> ON <collection>`
 Secondary Index: created on selected fields
