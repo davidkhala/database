@@ -1,4 +1,6 @@
-# Indexes
+Text Analyzer is used by both the index and during full text search
+
+# Index Types
 
 Primary Index: covers all document keys
 - Perform a full bucket(??Collection) scan
