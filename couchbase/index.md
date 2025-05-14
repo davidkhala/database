@@ -1,10 +1,20 @@
 Text Analyzer is used by both the index and during full text search
 
-# Index Types
+# Index
 
+## Indexing Options??
+- Simple
+- Composite
+- Array
+- Functional
+- Memory-Only or On-Disk
+- top-level or sub-document
+- Replica index
+
+
+## Types
 Primary Index: covers all document keys
-- Perform a full bucket(??Collection) scan
-- Do not reduce the amount of query search time?
+- Perform a full Collection scan
 - used by Developers for ad-hoc query, not for production
 - `CREATE PRIMARY INDEX <index name> ON <collection>`
 Secondary Index: created on selected fields

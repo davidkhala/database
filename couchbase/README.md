@@ -6,16 +6,31 @@
 - similar to database level
 - aka. **keyspace**
 - **Immutable**: cannot be renamed after provision
-Types
 
+Types
+> All bucket types are fully compatible with the Memcached open source distributed key-value cache.
 - `Couchbase`: store data persistently, as well as in memory (default type)
-  - If a Couchbase bucket's RAM-quota is exceeded, items are *ejected* from memory. Then data will only reside in disk
+  - If bucket's RAM-quota is exceeded, items are *ejected* from memory. Then data will only reside in disk
 - `Ephemeral`
-- `Memcached`
+  - No persistence
+  - highly consistent in-memory performance, without disk-based fluctuations
+  - faster node rebalances and restarts
+  - If bucket's RAM-quota is exceeded, either behavior can be configured when bucket-creation
+    1. Resident data-items remain in RAM. Attempts to add data therefore fail.
+    2. Resident data-items are *ejected* from RAM, to make way for new data. 
+      - however, a `tombstone` is retained until the next scheduled purge of metadata for the current node
+      - `tombstone` is a record of the ejected item, which includes keys and metadata
+
+- `Memcached`: deprecated
+  - designed to be used alongside other database platforms
+  - only exist in RAM
+  - If bucket's RAM-quota is exceeded, items are *ejected*
 
 Shards
 - aka. vBucket
-- Within each Bucket are 1024 vBuckets. Spread out automatically only on Data nodes
+- Within each Bucket are 1024 vBuckets. Spread out automatically and evenly only on Data nodes
+- Sorted by hash value of Document key
+- **Autonomous**: DBA don't need and cannot control
 
 Limit
 >
