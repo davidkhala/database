@@ -1,6 +1,6 @@
 # Redis
 
-# Redis.com
+# [Redis Labs](https://redis.io/)
 
 ## [Redis insight](https://redis.com/redis-enterprise/redis-insight/)
 The Best Redis GUI
