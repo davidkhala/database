@@ -34,6 +34,7 @@ Partial Index: cover subset of Documents
 # Search Indexes
 
 Search Index is not Query Index
+- Complex
 
 Provision
 >
