@@ -1,4 +1,0 @@
-# https://milvus.io/docs/install_standalone-docker.md#Install-Milvus-in-Docker
-
-
-curl -sfL https://raw.githubusercontent.com/milvus-io/milvus/master/scripts/standalone_embed.sh | bash -s start
