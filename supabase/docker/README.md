@@ -1,0 +1,1 @@
+TODO: supabase-vector does not support windows
