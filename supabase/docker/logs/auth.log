@@ -1,0 +1,12 @@
+2025-11-28 10:53:37.901 | {"level":"info","msg":"Go runtime metrics collection started","time":"2025-11-28T02:53:37Z"}
+2025-11-28 10:53:37.924 | {"component":"pop","level":"info","msg":"Migrations already up to date, nothing to apply","time":"2025-11-28T02:53:37Z"}
+2025-11-28 10:53:37.924 | {"args":[0.022219966],"component":"pop","level":"info","msg":"%.4f seconds","time":"2025-11-28T02:53:37Z"}
+2025-11-28 10:53:37.924 | {"count":0,"level":"info","msg":"GoTrue migrations applied successfully","time":"2025-11-28T02:53:37Z"}
+2025-11-28 10:53:37.927 | {"component":"api","level":"warning","msg":"DEPRECATION NOTICE: GOTRUE_JWT_ADMIN_GROUP_NAME not supported by Supabase's GoTrue, will be removed soon","time":"2025-11-28T02:53:37Z"}
+2025-11-28 10:53:37.927 | {"component":"api","level":"warning","msg":"DEPRECATION NOTICE: GOTRUE_JWT_DEFAULT_GROUP_NAME not supported by Supabase's GoTrue, will be removed soon","time":"2025-11-28T02:53:37Z"}
+2025-11-28 10:53:37.927 | {"level":"info","msg":"GoTrue API started on: 0.0.0.0:9999","time":"2025-11-28T02:53:37Z","version":"v2.183.0"}
+2025-11-28 10:53:37.927 | {"component":"apiworker","level":"info","msg":"apiworker: index worker started","time":"2025-11-28T02:53:37Z","worker_type":"apiworker_index_worker"}
+2025-11-28 10:53:37.927 | {"component":"apiworker","level":"info","msg":"apiworker: template cache worker started","time":"2025-11-28T02:53:37Z","worker_type":"apiworker_template_cache"}
+2025-11-28 10:53:37.927 | {"component":"apiworker","level":"info","msg":"apiworker: config notifier started","time":"2025-11-28T02:53:37Z","worker_type":"apiworker_config_notifier"}
+2025-11-28 10:53:37.927 | {"component":"apiworker","level":"info","msg":"apiworker: db worker started","time":"2025-11-28T02:53:37Z","worker_type":"apiworker_db_worker"}
+2025-11-28 10:53:37.936 | {"component":"apiworker","config_conn_max_idle_time":"0s","config_conn_max_lifetime":"0s","config_conn_percentage":0,"config_max_idle_pool_size":0,"config_max_pool_size":0,"level":"info","limit_conn_max_idle_time":"0s","limit_conn_max_lifetime":"0s","limit_max_idle_conns":0,"limit_max_open_conns":0,"limit_strategy":"fixed","msg":"applying connection limits to db using the \"fixed\" strategy","server_max_conns":100,"time":"2025-11-28T02:53:37Z","worker_type":"apiworker_db_worker"}

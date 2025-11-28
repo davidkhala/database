@@ -1,0 +1,9 @@
+2025-11-28 10:53:38.169 | 28/Nov/2025:02:53:38 +0000: Starting PostgREST 13.0.7...
+2025-11-28 10:53:38.169 | 28/Nov/2025:02:53:38 +0000: API server listening on 0.0.0.0:3000
+2025-11-28 10:53:38.198 | 28/Nov/2025:02:53:38 +0000: Listening for database notifications on the "pgrst" channel
+2025-11-28 10:53:38.198 | 28/Nov/2025:02:53:38 +0000: Successfully connected to PostgreSQL 15.8 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 13.2.0, 64-bit
+2025-11-28 10:53:38.198 | 28/Nov/2025:02:53:38 +0000: Connection Pool initialized with a maximum size of 10 connections
+2025-11-28 10:53:38.205 | 28/Nov/2025:02:53:38 +0000: Config reloaded
+2025-11-28 10:53:38.388 | 28/Nov/2025:02:53:38 +0000: Schema cache queried in 6.8 milliseconds
+2025-11-28 10:53:38.388 | 28/Nov/2025:02:53:38 +0000: Schema cache loaded 11 Relations, 10 Relationships, 20 Functions, 0 Domain Representations, 4 Media Type Handlers, 1194 Timezones
+2025-11-28 10:53:38.388 | 28/Nov/2025:02:53:38 +0000: Schema cache loaded in 0.8 milliseconds
