@@ -9,3 +9,7 @@ trigger
 endpoint
 - for Prometheus: 8070
 - for Rest API: 9443
+
+slow log
+- `SLOWLOG LEN`: count current logs
+- `SLOWLOG GET [n]`: tail latest n records (default n=10)
