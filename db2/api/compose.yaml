@@ -1,0 +1,10 @@
+
+services:
+  db2rest:
+    image: icr.io/obs/hdm/db2rest:latest-amd64 # Authenticated image, requires IBM Cloud login and access to the IBM Container Registry
+    container_name: db2rest
+    ports:
+      - "50050:50050"
+    environment:
+      LICENSE: accept
+    
