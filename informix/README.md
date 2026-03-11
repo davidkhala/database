@@ -1,6 +1,6 @@
 
 
-# SPL
+# Stored Procedure Language (SPL)
 
 Informix 的 SPL 是行业内最强的存储过程语言之一
 - 执行效率，轻量化，批处理模型上优于Oracle PL/SQL
