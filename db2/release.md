@@ -16,3 +16,10 @@ Download
 3. select Product: `IBM Data Server Client Packages`
 4. select Recommended Group `DSClients-115-ntx64-RECOMMENDED`
 5. download dsdriver installer like `v11.5.9_ntx64_dsdriver_ALL_LANG.exe`
+
+# IBM Db2 Datalake Tables
+
+讓 Db2 能直接訪問 Object Storage
+
+- DML通過Copy-on-Write的方式，產生新 data file
+  - 不是 Row-level OLTP
