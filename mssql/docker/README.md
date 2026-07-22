@@ -8,6 +8,7 @@
 
 # Microsoft SQL Server - Ubuntu based images
 [DockerHub](https://hub.docker.com/r/microsoft/mssql-server)
+- [releases](https://mcr.microsoft.com/artifact/mar/mssql/server/tags)
 ## Config
 - Password policy: At least 8 characters including uppercase, lowercase letters, base-10 digits and/or non-alphanumeric symbols.
 - At least 2GB of RAM
