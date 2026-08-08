@@ -1,9 +1,13 @@
-# Windows Developer Edition image
+# Windows image
 > SQL Server on Windows Containers isn't supported for production workloads. ---- microsoft
-- [source](https://github.com/Microsoft/mssql-docker/tree/master/windows/mssql-server-windows-developer)
 - > As Microsoft doesn't seem to be publishing up to date versions of the image.
-  - [community fork release](https://hub.docker.com/r/octopusdeploy/mssql-server-windows-express)
 - version lag: latest up-to 2017
+## Windows Developer Edition image
+- [source](https://github.com/Microsoft/mssql-docker/tree/master/windows/mssql-server-windows-developer)
+
+## Windows Express Edition image
+- [community fork release](https://hub.docker.com/r/octopusdeploy/mssql-server-windows-express)
+
 
 # Microsoft SQL Server - Ubuntu based images
 [DockerHub](https://hub.docker.com/r/microsoft/mssql-server)
