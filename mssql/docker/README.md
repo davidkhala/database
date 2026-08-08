@@ -4,7 +4,6 @@
 - > As Microsoft doesn't seem to be publishing up to date versions of the image.
   - [community fork release](https://hub.docker.com/r/octopusdeploy/mssql-server-windows-express)
 - version lag: latest up-to 2017
-  - > You can currently sign-up for SQL Server 2019 on Windows Containers available in [Early Adopter Preview program](https://www.microsoft.com/en-us/sql-server/blog/2019/07/01/sql-server-2019-on-windows-containers-now-in-early-adopters-program/)
 
 # Microsoft SQL Server - Ubuntu based images
 [DockerHub](https://hub.docker.com/r/microsoft/mssql-server)
