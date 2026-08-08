@@ -1,0 +1,4 @@
+name: mariadb-legacy
+services:
+  bitnami:
+    image: bitnami/mariadb:5.5.48-0-r01

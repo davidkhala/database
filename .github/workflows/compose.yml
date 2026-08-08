@@ -1,0 +1,68 @@
+name: container compose tests
+on:
+  push:
+jobs:
+  db2:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: db2/luw/
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose up -d
+  dragonfly:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dragonfly
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose up -d
+  maria:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: maria/docker
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose up -d
+  milvus:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: milvus
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose up -d
+  mssql:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mssql/docker
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose -f ubuntu-compose.yaml up -d
+  pg:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: postgres/docker
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose up -d
+  infinispan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: redhat/infinispan
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose up -d
+  gremlin:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tinkerpop/gremlin
+    steps:
+      - uses: actions/checkout@main
+      - run: docker compose up -d
